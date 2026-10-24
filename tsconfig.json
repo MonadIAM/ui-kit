@@ -1,0 +1,19 @@
+{
+  // Keep common compiler options in the shared frontend base config.
+  "extends": "./configs/tsconfig.base.json",
+  "compilerOptions": {
+    "paths": {
+      "~elements/*": ["./src/elements/*"],
+      "~elements": ["./src/elements"],
+      "~hooks/*": ["./src/hooks/*"],
+      "~lib/*": ["./src/lib/*"]
+    },
+    // Package source is the full TypeScript compilation boundary.
+    "rootDir": "./src",
+    // Components use React's browser-facing type definitions.
+    "types": ["react"]
+  },
+  // Type-check package sources, not tool configuration or generated output.
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "configs", "dist"]
+}

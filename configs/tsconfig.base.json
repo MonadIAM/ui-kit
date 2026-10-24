@@ -1,0 +1,41 @@
+{
+  // Shared TypeScript defaults for browser applications and UI packages.
+  "compilerOptions": {
+    // Match the JavaScript features supported by the current frontend toolchain.
+    "composite": false,
+    "target": "ES2022",
+    // Let the bundler resolve package exports and frontend modules.
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    // Use React's automatic JSX runtime; no React import is required per file.
+    "jsx": "react-jsx",
+    // Browser DOM APIs are available to frontend code.
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    // Allow common package interop patterns used by frontend dependencies.
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "allowSyntheticDefaultImports": true,
+    // JavaScript is checked and bundled separately from TypeScript sources.
+    "allowJs": false,
+    "sourceMap": false,
+    "declaration": false,
+    "declarationMap": false,
+    // Rspack owns output generation; TypeScript only performs type checking.
+    "noEmit": true,
+    "useDefineForClassFields": true,
+    // Keep the strictness and correctness checks used by service projects.
+    "noImplicitReturns": true,
+    "allowUnreachableCode": false,
+    "noImplicitOverride": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "skipLibCheck": false,
+    "forceConsistentCasingInFileNames": true,
+    "isolatedModules": true,
+    "incremental": true,
+    "exactOptionalPropertyTypes": false,
+    "noPropertyAccessFromIndexSignature": false,
+    "strict": true
+  }
+}

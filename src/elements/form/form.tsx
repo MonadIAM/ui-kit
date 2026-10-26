@@ -1,8 +1,9 @@
-import { FormFields } from "./components/form-fields";
+import { FormFields } from "./components/fields";
 
-export function Form({ form, legend, disabled = false, children, ...props }: UI.Form.Props) {
+export const FormRoot: UI.Form.Signature = ({ form, legend, disabled = false, children, ...props }) => {
     return (
         <form
+            noValidate
             {...props}
             onSubmit={(event) => {
                 event.preventDefault();
@@ -21,4 +22,4 @@ export function Form({ form, legend, disabled = false, children, ...props }: UI.
             </form.Subscribe>
         </form>
     );
-}
+};

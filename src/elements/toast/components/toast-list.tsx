@@ -1,20 +1,30 @@
 import { Toast } from "@base-ui/react/toast";
 import { useEffect } from "react";
 
-import {
-    toastDescriptionVariants,
-    toastCloseIconVariants,
-    toastViewportVariants,
-    toastContentVariants,
-    toastActionVariants,
-    toastTitleVariants,
-    toastCloseVariants,
-    toastRootVariants,
-    toastIconVariants,
-    toastBodyVariants,
-} from "../variants";
+import { CircleCheckIcon, CircleInfoIcon, CircleAlertIcon, CircleXIcon, CloseIcon } from "~ui/assets/icons";
+import { ToastType } from "~ui/enums";
 
-export function ToastList({ source }: UI.Toast.Host.Props) {
+import {
+    toastDescriptionStyles,
+    toastCloseIconStyles,
+    toastViewportStyles,
+    toastContentStyles,
+    toastActionStyles,
+    toastTitleStyles,
+    toastCloseStyles,
+    toastRootStyles,
+    toastIconStyles,
+    toastBodyStyles,
+} from "../styles";
+
+const icons = new Map<string, typeof CircleInfoIcon>([
+    [ToastType.SUCCESS, CircleCheckIcon],
+    [ToastType.INFO, CircleInfoIcon],
+    [ToastType.WARNING, CircleAlertIcon],
+    [ToastType.ERROR, CircleXIcon],
+]);
+
+export function ToastList({ source, label = "Notifications", dismissLabel = "Dismiss notification" }: UI.Toast.Host.Props) {
     const { toasts, add, close } = Toast.useToastManager();
 
     useEffect(
@@ -34,32 +44,28 @@ export function ToastList({ source }: UI.Toast.Host.Props) {
 
     return (
         <Toast.Portal>
-            <Toast.Viewport aria-label="Notifications" className={toastViewportVariants()}>
-                {[...toasts].reverse().map((toast) => (
-                    <Toast.Root key={toast.id} toast={toast} swipeDirection="right" className={toastRootVariants()}>
-                        <Toast.Content className={toastContentVariants()}>
-                            <span aria-hidden="true" className={toastIconVariants()}>
-                                {toast.type}
-                            </span>
-                            <div className={toastBodyVariants()}>
-                                <Toast.Title className={toastTitleVariants()} />
-                                <Toast.Description className={toastDescriptionVariants()} />
-                                {toast.actionProps && <Toast.Action className={toastActionVariants()} />}
-                            </div>
-                            <Toast.Close aria-label="Dismiss notification" className={toastCloseVariants()}>
-                                <svg
-                                    aria-hidden="true"
-                                    viewBox="0 0 16 16"
-                                    className={toastCloseIconVariants()}
-                                    fill="none"
-                                    stroke="currentColor"
-                                    strokeWidth="1.5">
-                                    <path d="m4 4 8 8M12 4l-8 8" />
-                                </svg>
-                            </Toast.Close>
-                        </Toast.Content>
-                    </Toast.Root>
-                ))}
+            <Toast.Viewport aria-label={label} className={toastViewportStyles}>
+                {[...toasts].reverse().map((toast) => {
+                    const StatusIcon = icons.get(toast.type ?? ToastType.INFO) ?? CircleInfoIcon;
+
+                    return (
+                        <Toast.Root key={toast.id} toast={toast} swipeDirection="right" className={toastRootStyles}>
+                            <Toast.Content className={toastContentStyles}>
+                                <span aria-hidden="true" className={toastIconStyles}>
+                                    <StatusIcon />
+                                </span>
+                                <div className={toastBodyStyles}>
+                                    <Toast.Title className={toastTitleStyles} />
+                                    <Toast.Description className={toastDescriptionStyles} />
+                                    {toast.actionProps && <Toast.Action className={toastActionStyles} />}
+                                </div>
+                                <Toast.Close aria-label={dismissLabel} className={toastCloseStyles}>
+                                    <CloseIcon aria-hidden="true" className={toastCloseIconStyles} />
+                                </Toast.Close>
+                            </Toast.Content>
+                        </Toast.Root>
+                    );
+                })}
             </Toast.Viewport>
         </Toast.Portal>
     );

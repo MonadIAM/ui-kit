@@ -1,7 +1,7 @@
 import { cn } from "cn";
 
-import { centeredViewportVariants } from "./variants";
+import { centeredViewportStyles } from "./styles";
 
 export function CenteredViewport({ className, ...props }: UI.CenteredViewport.Props) {
-    return <main className={cn(centeredViewportVariants(), className)} {...props} />;
+    return <main className={cn(centeredViewportStyles, className)} {...props} />;
 }

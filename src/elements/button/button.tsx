@@ -1,15 +1,17 @@
 import { Button as ButtonPrimitive } from "@base-ui/react/button";
 import { cn } from "cn";
 
-import { buttonVariants, buttonSpinnerVariants } from "./variants";
+import { ButtonSize, ButtonVariant, SpinnerVariant } from "~ui/enums";
+
+import { buttonVariants, buttonSpinnerStyles } from "./styles";
 import { Spinner } from "../spinner";
 
 export function Button({
     className,
-    variant = "default",
-    size = "default",
-    loading = false,
+    variant = ButtonVariant.DEFAULT,
+    size = ButtonSize.DEFAULT,
     disabled = false,
+    loading = false,
     children,
     ...props
 }: UI.Button.Props) {
@@ -20,13 +22,7 @@ export function Button({
             disabled={disabled || loading}
             aria-busy={loading}
             {...props}>
-            {loading && (
-                <Spinner
-                    variant="inline"
-                    aria-hidden="true"
-                    className={buttonSpinnerVariants({ inherit: variant === "default" || variant === "destructive" })}
-                />
-            )}
+            {loading && <Spinner variant={SpinnerVariant.INLINE} aria-hidden="true" className={buttonSpinnerStyles} />}
             {children}
         </ButtonPrimitive>
     );

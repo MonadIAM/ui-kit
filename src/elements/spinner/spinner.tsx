@@ -1,8 +1,10 @@
 import { cn } from "cn";
 
-import { spinnerVariants, spinnerIndicatorVariants } from "./variants";
+import { SpinnerVariant } from "~ui/enums";
 
-export function Spinner({ className, variant = "area", ...props }: UI.Spinner.Props) {
+import { spinnerVariants, spinnerIndicatorVariants } from "./styles";
+
+export function Spinner({ className, variant = SpinnerVariant.AREA, ...props }: UI.Spinner.Props) {
     return (
         <span
             role="status"

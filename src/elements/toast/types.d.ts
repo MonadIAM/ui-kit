@@ -1,4 +1,4 @@
-export {};
+import type { ToastType } from "~ui/enums";
 
 declare global {
     namespace UI.Toast {
@@ -6,23 +6,40 @@ declare global {
             id?: string;
             title: string;
             description?: string;
-            type?: "success" | "info" | "warning" | "error";
+            type?: ToastType;
             timeout?: number;
-            action?: { label: string; onClick(): void };
+            action?: {
+                label: string;
+
+                onClick(): void;
+            };
         };
 
         interface Transport {
-            add(options: Options & { id: string; onClose(): void; onRemove(): void }): string;
+            add(
+                options: Options & {
+                    id: string;
+
+                    onClose(): void;
+                    onRemove(): void;
+                },
+            ): string;
+
             close(id?: string): void;
         }
 
         interface Source {
             readonly limit: number;
+
             connect(props: { transport: Transport }): () => void;
         }
 
         namespace Host {
-            type Props = { source: Source };
+            type Props = {
+                source: Source;
+                label?: string;
+                dismissLabel?: string;
+            };
         }
     }
 }

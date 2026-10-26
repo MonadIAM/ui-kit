@@ -1,62 +1,23 @@
-import { useId } from "react";
+import { FieldControl } from "./components/control";
+import { FieldFrame } from "./components/frame";
 
-import { FieldLabel } from "./components/field-label";
-import { FieldError } from "./components/field-error";
-import { FieldRoot } from "./components/field-root";
-import { TextInput } from "./components/text-input";
-
-export const Field: UI.Field.Signature = ({
-    orientation,
-    validators,
-    label,
-    form,
-    name,
-    id,
-    type = "text",
-    "aria-describedby": describedBy,
-    ...props
-}) => {
-    const generatedId = useId();
-    const inputId = id ?? generatedId;
-    const errorId = `${inputId}-error`;
-
-    return (
-        <form.Field name={name} validators={validators}>
-            {(field) => {
-                const invalid = field.state.meta.errors.length > 0;
-                const messages = field.state.meta.errors.map((issue: unknown) => {
-                    if (typeof issue === "string") {
-                        return issue;
-                    } else if (
-                        issue &&
-                        typeof issue === "object" &&
-                        "message" in issue &&
-                        typeof issue.message === "string"
-                    ) {
-                        return issue.message;
-                    } else {
-                        return "Invalid value";
-                    }
-                });
-
-                return (
-                    <FieldRoot orientation={orientation} data-invalid={invalid}>
-                        <FieldLabel htmlFor={inputId}>{label}</FieldLabel>
-                        <TextInput
-                            {...props}
-                            id={inputId}
-                            name={field.name}
-                            type={type}
-                            value={String(field.state.value ?? "")}
-                            onBlur={field.handleBlur}
-                            onChange={(event) => field.handleChange(() => event.target.value as typeof field.state.value)}
-                            aria-invalid={invalid}
-                            aria-describedby={[describedBy, invalid && errorId].filter(Boolean).join(" ") || undefined}
-                        />
-                        {invalid && <FieldError id={errorId}>{messages.join(" ")}</FieldError>}
-                    </FieldRoot>
-                );
-            }}
-        </form.Field>
-    );
-};
+export const Field: UI.Field.Signature = ({ field, label, action, orientation, invalidMessage, ...props }) => (
+    <FieldFrame
+        name={field.name}
+        label={label}
+        action={action}
+        orientation={orientation}
+        invalidMessage={invalidMessage}
+        readOnly={props.readOnly}
+        disabled={props.disabled}
+        dirty={field.state.meta.isDirty}
+        touched={field.state.meta.isTouched}
+        errors={field.state.meta.errors}>
+        <FieldControl
+            {...props}
+            value={field.state.value}
+            onBlur={props.readOnly ? undefined : field.handleBlur}
+            onValueChange={props.readOnly ? undefined : field.handleChange}
+        />
+    </FieldFrame>
+);

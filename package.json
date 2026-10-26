@@ -5,13 +5,14 @@
   "type": "module",
   "exports": {
     ".": "./src/index.ts",
-    "./styles.css": "./src/styles.css"
+    "./enums": "./src/enums.ts",
+    "./styles.css": "./src/styles.css",
+    "./icons": "./src/assets/icons/index.ts"
   },
   "peerDependencies": {
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "tailwindcss": "^4.3.0",
-    "@tanstack/react-form": "^1.33.5"
+    "tailwindcss": "^4.3.0"
   },
   "scripts": {
     "tsc": "tsc --noEmit",
@@ -32,8 +33,7 @@
     "react": "19.3.0",
     "react-dom": "19.3.0",
     "typescript": "6.0.3",
-    "typescript-eslint": "8.67.0",
-    "@tanstack/react-form": "1.33.5"
+    "typescript-eslint": "8.67.0"
   },
   "files": [
     "src"

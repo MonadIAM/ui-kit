@@ -2,10 +2,10 @@ import { Toast } from "@base-ui/react/toast";
 
 import { ToastList } from "./components/toast-list";
 
-export function ToastHost({ source }: UI.Toast.Host.Props) {
+export function ToastHost({ source, ...props }: UI.Toast.Host.Props) {
     return (
         <Toast.Provider limit={source.limit}>
-            <ToastList source={source} />
+            <ToastList source={source} {...props} />
         </Toast.Provider>
     );
 }

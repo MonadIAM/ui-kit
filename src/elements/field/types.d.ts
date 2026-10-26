@@ -1,121 +1,56 @@
-import type {
-    DeepKeysOfType,
-    DeepValue,
-    FieldValidateOrFn,
-    FieldAsyncValidateOrFn,
-    FieldValidators,
-    FormValidateOrFn,
-    FormAsyncValidateOrFn,
-    ReactFormApi,
-} from "@tanstack/react-form";
-import type { ComponentProps, JSX, ReactNode } from "react";
-import { VariantProps } from "class-variance-authority";
-
-import { fieldVariants } from "./variants";
+import type { JSX } from "react";
 
 declare global {
     namespace UI.Field {
-        type Props<
-            TData,
-            TName extends DeepKeysOfType<TData, string>,
-            TOnMount extends undefined | FormValidateOrFn<TData>,
-            TOnChange extends undefined | FormValidateOrFn<TData>,
-            TOnChangeAsync extends undefined | FormAsyncValidateOrFn<TData>,
-            TOnBlur extends undefined | FormValidateOrFn<TData>,
-            TOnBlurAsync extends undefined | FormAsyncValidateOrFn<TData>,
-            TOnSubmit extends undefined | FormValidateOrFn<TData>,
-            TOnSubmitAsync extends undefined | FormAsyncValidateOrFn<TData>,
-            TOnDynamic extends undefined | FormValidateOrFn<TData>,
-            TOnDynamicAsync extends undefined | FormAsyncValidateOrFn<TData>,
-            TOnServer extends undefined | FormAsyncValidateOrFn<TData>,
-            TSubmitMeta,
-        > = Omit<
-            TextInput.Props,
-            "form" | "name" | "value" | "defaultValue" | "onChange" | "onBlur" | "children" | "type" | "aria-invalid"
-        > &
-            VariantProps<typeof fieldVariants> & {
-                form: Pick<
-                    ReactFormApi<
-                        TData,
-                        TOnMount,
-                        TOnChange,
-                        TOnChangeAsync,
-                        TOnBlur,
-                        TOnBlurAsync,
-                        TOnSubmit,
-                        TOnSubmitAsync,
-                        TOnDynamic,
-                        TOnDynamicAsync,
-                        TOnServer,
-                        TSubmitMeta
-                    >,
-                    "Field"
-                >;
-                name: TName;
-                label: ReactNode;
-                type?: "text" | "password" | "email" | "url" | "tel" | "search";
-                validators?: FieldValidators<
-                    TData,
-                    TName,
-                    DeepValue<TData, TName>,
-                    FieldValidateOrFn<TData, TName, DeepValue<TData, TName>>,
-                    FieldValidateOrFn<TData, TName, DeepValue<TData, TName>>,
-                    FieldAsyncValidateOrFn<TData, TName, DeepValue<TData, TName>>,
-                    FieldValidateOrFn<TData, TName, DeepValue<TData, TName>>,
-                    FieldAsyncValidateOrFn<TData, TName, DeepValue<TData, TName>>,
-                    FieldValidateOrFn<TData, TName, DeepValue<TData, TName>>,
-                    FieldAsyncValidateOrFn<TData, TName, DeepValue<TData, TName>>,
-                    FieldValidateOrFn<TData, TName, DeepValue<TData, TName>>,
-                    FieldAsyncValidateOrFn<TData, TName, DeepValue<TData, TName>>
-                >;
+        type Props = Control.Options &
+            Pick<Frame.Props, "label" | "orientation" | "invalidMessage"> & {
+                field: Binding.Contract;
             };
 
-        type Signature = <
-            TData,
-            TName extends DeepKeysOfType<TData, string>,
-            TOnMount extends undefined | FormValidateOrFn<TData>,
-            TOnChange extends undefined | FormValidateOrFn<TData>,
-            TOnChangeAsync extends undefined | FormAsyncValidateOrFn<TData>,
-            TOnBlur extends undefined | FormValidateOrFn<TData>,
-            TOnBlurAsync extends undefined | FormAsyncValidateOrFn<TData>,
-            TOnSubmit extends undefined | FormValidateOrFn<TData>,
-            TOnSubmitAsync extends undefined | FormAsyncValidateOrFn<TData>,
-            TOnDynamic extends undefined | FormValidateOrFn<TData>,
-            TOnDynamicAsync extends undefined | FormAsyncValidateOrFn<TData>,
-            TOnServer extends undefined | FormAsyncValidateOrFn<TData>,
-            TSubmitMeta,
-        >(
-            props: Props<
-                TData,
-                TName,
-                TOnMount,
-                TOnChange,
-                TOnChangeAsync,
-                TOnBlur,
-                TOnBlurAsync,
-                TOnSubmit,
-                TOnSubmitAsync,
-                TOnDynamic,
-                TOnDynamicAsync,
-                TOnServer,
-                TSubmitMeta
-            >,
-        ) => JSX.Element;
+        type Result = JSX.Element;
 
-        namespace Root {
-            type Props = ComponentProps<"div"> & VariantProps<typeof fieldVariants>;
+        type Signature = (props: Props) => Result;
+    }
+
+    namespace UI.Field.Input {
+        interface Contract {
+            value: string;
+
+            onValueChange?: Change.Signature;
+            onBlur?: Blur.Signature;
         }
 
-        namespace Label {
-            type Props = ComponentProps<"label">;
+        namespace Blur {
+            type Result = void;
+
+            type Signature = () => Result;
         }
 
-        namespace Error {
-            type Props = ComponentProps<"div">;
+        namespace Change {
+            type Props = string;
+
+            type Result = void;
+
+            type Signature = (value: Props) => Result;
+        }
+    }
+
+    namespace UI.Field.Binding {
+        interface Contract {
+            readonly name: string;
+            readonly state: State;
+
+            handleChange: Input.Change.Signature;
+            handleBlur: Input.Blur.Signature;
         }
 
-        namespace TextInput {
-            type Props = ComponentProps<"input">;
-        }
+        type State = {
+            value: string;
+            meta: {
+                isTouched: boolean;
+                errors: unknown[];
+                isDirty: boolean;
+            };
+        };
     }
 }

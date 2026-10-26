@@ -3,6 +3,7 @@
   "extends": "./configs/tsconfig.base.json",
   "compilerOptions": {
     "paths": {
+      "~ui/*": ["./src/*"],
       "~elements/*": ["./src/elements/*"],
       "~elements": ["./src/elements"],
       "~hooks/*": ["./src/hooks/*"],

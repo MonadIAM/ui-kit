@@ -1,13 +1,13 @@
 import { Button as ButtonPrimitive } from "@base-ui/react/button";
-import { VariantProps } from "class-variance-authority";
 
-import { buttonVariants } from "./variants";
+import type { ButtonSize, ButtonVariant } from "~ui/enums";
 
 declare global {
     namespace UI.Button {
-        type Props = ButtonPrimitive.Props &
-            VariantProps<typeof buttonVariants> & {
-                loading?: boolean;
-            };
+        type Props = ButtonPrimitive.Props & {
+            variant?: ButtonVariant;
+            size?: ButtonSize;
+            loading?: boolean;
+        };
     }
 }

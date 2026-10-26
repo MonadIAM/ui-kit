@@ -47,6 +47,10 @@ export default [
                 {
                     patterns: [
                         {
+                            group: ["@monadiam/ui-kit", "@monadiam/ui-kit/**"],
+                            message: "Use internal aliases for imports within ui-kit.",
+                        },
+                        {
                             group: ["../../../**", "./../../../**"],
                             message: "Use an alias or keep relative imports at ../../x or shallower.",
                         },
@@ -63,13 +67,9 @@ export default [
                         ["internal"],                   // internal modules (path aliases)
                         ["parent", "sibling", "index"], // parent, sibling, and index (relative paths)
                     ],
+                    pathGroupsExcludedImportTypes: ["builtin"],
                     pathGroups: [
                         { pattern: "~*{/**,}", group: "internal", position: "before" },
-                        {
-                            pattern: "@monadiam/ui-kit{/**,}",        // aliases like ~alias/... and ~alias
-                            group: "internal",
-                            position: "before"
-                        },
                     ],
                     "newlines-between": "always"        // blank line between each group
                 }

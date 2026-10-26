@@ -20,6 +20,7 @@ import "./elements/toast/types";
 import "./elements/field/types";
 import "./elements/form/types";
 import "./elements/flex/types";
+import "./elements/text/types";
 
 declare global {
     namespace UI {

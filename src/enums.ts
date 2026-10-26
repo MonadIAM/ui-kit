@@ -96,3 +96,36 @@ export enum FlexWrap {
     WRAP = "wrap",
     REVERSE = "wrap-reverse",
 }
+
+export enum TextSize {
+    XS = "xs",
+    SM = "sm",
+    MD = "md",
+    LG = "lg",
+    XL = "xl",
+    XXL = "2xl",
+    XXXL = "3xl",
+}
+
+export enum TextWeight {
+    REGULAR = "regular",
+    MEDIUM = "medium",
+    SEMIBOLD = "semibold",
+    BOLD = "bold",
+}
+
+export enum TextTone {
+    DEFAULT = "default",
+    MUTED = "muted",
+    PRIMARY = "primary",
+    SUCCESS = "success",
+    WARNING = "warning",
+    DANGER = "danger",
+}
+
+export enum TextAlign {
+    START = "start",
+    CENTER = "center",
+    END = "end",
+    JUSTIFY = "justify",
+}

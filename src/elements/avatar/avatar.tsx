@@ -1,6 +1,7 @@
 import { cn } from "cn";
 
 import { UserIcon } from "~ui/assets/icons";
+import { Text } from "~ui/elements/text";
 
 import { avatarStyles, avatarIconStyles } from "./styles";
 
@@ -15,13 +16,13 @@ export function Avatar({ name, label, className, ...props }: UI.Avatar.Props) {
         .join("")
         .toLocaleUpperCase();
     return (
-        <span
+        <Text.Span
             {...props}
             role="img"
             aria-label={label}
             title={name?.trim() ? name : label}
             className={cn(avatarStyles, className)}>
             {initials?.length ? initials : <UserIcon aria-hidden="true" className={avatarIconStyles} />}
-        </span>
+        </Text.Span>
     );
 }

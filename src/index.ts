@@ -11,6 +11,7 @@ export { Navbar } from "./elements/navbar";
 export { Avatar } from "./elements/avatar";
 export { Button } from "./elements/button";
 export { Field } from "./elements/field";
+export { Text } from "./elements/text";
 export { Flex } from "./elements/flex";
 
 export type { UI } from "./types";

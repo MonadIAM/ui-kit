@@ -2,19 +2,24 @@ import { useField } from "@tanstack/react-form";
 
 import { useFormContext } from "~ui/elements/form/context";
 
-import { FieldFrame } from "../frame";
 import { CodeInput } from "../code-input";
+import { FieldFrame } from "../frame";
 
 export const FieldCode: UI.Field.Code.Signature = ({
-    form,
-    name,
+    invalidMessage,
+    orientation,
     validators,
     label,
-    orientation,
-    invalidMessage,
+    form,
+    name,
     ...props
 }) => {
-    useFormContext();
+    const parentForm = useFormContext();
+
+    if (!Object.is(parentForm, form)) {
+        throw new Error("Field must use the same form instance as its parent Form.");
+    }
+
     const field = useField({ form, name, validators });
 
     return (

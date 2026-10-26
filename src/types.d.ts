@@ -1,6 +1,7 @@
 import "./elements/field/components/text-input/types";
 import "./elements/field/components/code-input/types";
 import "./elements/form/components/actions/types";
+import "./elements/button/components/link/types";
 import "./elements/field/components/frame/types";
 import "./elements/form/components/fields/types";
 import "./elements/field/components/text/types";
@@ -15,7 +16,7 @@ import "./elements/warning/types";
 import "./elements/spinner/types";
 import "./elements/navbar/types";
 import "./elements/avatar/types";
-import "./elements/button/types";
+import "./elements/button/components/button/types";
 import "./elements/toast/types";
 import "./elements/field/types";
 import "./elements/form/types";

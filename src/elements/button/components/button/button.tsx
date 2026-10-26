@@ -2,11 +2,11 @@ import { Button as ButtonPrimitive } from "@base-ui/react/button";
 import { cn } from "cn";
 
 import { ButtonSize, ButtonVariant, SpinnerVariant } from "~ui/enums";
+import { Spinner } from "~ui/elements/spinner";
 
 import { buttonVariants, buttonSpinnerStyles } from "./styles";
-import { Spinner } from "../spinner";
 
-export function Button({
+export function BaseButton({
     className,
     variant = ButtonVariant.DEFAULT,
     size = ButtonSize.DEFAULT,

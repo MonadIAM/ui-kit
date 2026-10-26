@@ -23,6 +23,6 @@ export const fieldLabelStyles =
 export const fieldHeadingStyles = "min-h-5";
 export const fieldActionStyles =
     "ml-auto shrink-0 text-xs leading-5 [&_a]:rounded-sm [&_a]:text-primary [&_a]:outline-none [&_a]:underline-offset-4 [&_a:hover]:underline [&_a:focus-visible]:ring-2 [&_a:focus-visible]:ring-ring";
-export const fieldMessageStyles = "h-5 w-full overflow-y-auto";
+export const fieldMessageStyles = "min-h-5 w-full";
 
 export const fieldErrorStyles = "text-xs leading-4 text-destructive";

@@ -73,3 +73,26 @@ export enum FormAlignment {
     END = "end",
     BETWEEN = "between",
 }
+
+export enum FlexAlignment {
+    START = "start",
+    CENTER = "center",
+    END = "end",
+    STRETCH = "stretch",
+    BASELINE = "baseline",
+}
+
+export enum FlexJustification {
+    START = "start",
+    CENTER = "center",
+    END = "end",
+    BETWEEN = "between",
+    AROUND = "around",
+    EVENLY = "evenly",
+}
+
+export enum FlexWrap {
+    NONE = "nowrap",
+    WRAP = "wrap",
+    REVERSE = "wrap-reverse",
+}

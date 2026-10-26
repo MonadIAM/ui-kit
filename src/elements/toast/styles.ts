@@ -1,13 +1,11 @@
 export const toastViewportStyles =
-    "pointer-events-none fixed right-4 bottom-4 z-50 flex max-h-[calc(100dvh-2rem)] w-[min(26.25rem,calc(100vw-2rem))] flex-col gap-3 outline-none";
+    "pointer-events-none fixed right-4 bottom-4 z-50 max-h-[calc(100dvh-2rem)] w-[min(26.25rem,calc(100vw-2rem))] outline-none";
 
 export const toastRootStyles =
     "group/toast pointer-events-auto relative shrink-0 rounded-lg border border-border bg-popover p-4 text-popover-foreground shadow-xl transition-[opacity,transform] duration-200 outline-none data-[ending-style]:translate-x-4 data-[ending-style]:opacity-0 data-[starting-style]:translate-y-2 data-[starting-style]:opacity-0 data-[type=error]:border-destructive/50 data-[type=success]:border-primary/20 data-[type=warning]:border-amber-600/30 motion-reduce:transition-none";
 
-export const toastContentStyles = "flex items-start gap-3";
-
 export const toastIconStyles =
-    "mt-0.5 flex size-5 shrink-0 items-center justify-center text-primary group-data-[type=error]/toast:text-destructive group-data-[type=warning]/toast:text-amber-600 dark:group-data-[type=warning]/toast:text-amber-400 [&>svg]:size-5";
+    "mt-0.5 size-5 shrink-0 text-primary group-data-[type=error]/toast:text-destructive group-data-[type=warning]/toast:text-amber-600 dark:group-data-[type=warning]/toast:text-amber-400 [&>svg]:size-5";
 
 export const toastBodyStyles = "min-w-0 flex-1";
 

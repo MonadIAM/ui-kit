@@ -10,6 +10,8 @@ import "./elements/centered-viewport/types";
 import "./elements/language-select/types";
 import "./elements/recovery-codes/types";
 import "./elements/theme-toggle/types";
+import "./elements/container/types";
+import "./elements/warning/types";
 import "./elements/spinner/types";
 import "./elements/navbar/types";
 import "./elements/avatar/types";
@@ -17,6 +19,7 @@ import "./elements/button/types";
 import "./elements/toast/types";
 import "./elements/field/types";
 import "./elements/form/types";
+import "./elements/flex/types";
 
 declare global {
     namespace UI {

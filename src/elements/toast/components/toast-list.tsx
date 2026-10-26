@@ -2,13 +2,13 @@ import { Toast } from "@base-ui/react/toast";
 import { useEffect } from "react";
 
 import { CircleCheckIcon, CircleInfoIcon, CircleAlertIcon, CircleXIcon, CloseIcon } from "~ui/assets/icons";
-import { ToastType } from "~ui/enums";
+import { FlexAlignment, FlexJustification, ToastType } from "~ui/enums";
+import { Flex } from "~ui/elements/flex";
 
 import {
     toastDescriptionStyles,
     toastCloseIconStyles,
     toastViewportStyles,
-    toastContentStyles,
     toastActionStyles,
     toastTitleStyles,
     toastCloseStyles,
@@ -44,16 +44,21 @@ export function ToastList({ source, label = "Notifications", dismissLabel = "Dis
 
     return (
         <Toast.Portal>
-            <Toast.Viewport aria-label={label} className={toastViewportStyles}>
+            <Toast.Viewport render={<Flex.Col gap="0.75rem" />} aria-label={label} className={toastViewportStyles}>
                 {[...toasts].reverse().map((toast) => {
                     const StatusIcon = icons.get(toast.type ?? ToastType.INFO) ?? CircleInfoIcon;
 
                     return (
                         <Toast.Root key={toast.id} toast={toast} swipeDirection="right" className={toastRootStyles}>
-                            <Toast.Content className={toastContentStyles}>
-                                <span aria-hidden="true" className={toastIconStyles}>
+                            <Toast.Content render={<Flex.Row align={FlexAlignment.START} gap="0.75rem" />}>
+                                <Flex.Row
+                                    render={<span />}
+                                    align={FlexAlignment.CENTER}
+                                    justify={FlexJustification.CENTER}
+                                    aria-hidden="true"
+                                    className={toastIconStyles}>
                                     <StatusIcon />
-                                </span>
+                                </Flex.Row>
                                 <div className={toastBodyStyles}>
                                     <Toast.Title className={toastTitleStyles} />
                                     <Toast.Description className={toastDescriptionStyles} />

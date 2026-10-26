@@ -1,5 +1,8 @@
 import { Field } from "@base-ui/react/field";
 
+import { FlexAlignment, FlexJustification } from "~ui/enums";
+import { Flex } from "~ui/elements/flex";
+
 import {
     fieldVariants,
     fieldLabelStyles,
@@ -33,12 +36,17 @@ export const FieldFrame: UI.Field.Frame.Signature = ({
             data-slot="field"
             data-readonly={readOnly}
             className={fieldVariants({ orientation })}>
-            <div data-slot="field-heading" className={fieldHeadingStyles}>
+            <Flex.Row
+                data-slot="field-heading"
+                align={FlexAlignment.CENTER}
+                justify={FlexJustification.BETWEEN}
+                gap="0.5rem"
+                className={fieldHeadingStyles}>
                 <Field.Label data-slot="field-label" className={fieldLabelStyles}>
                     {label}
                 </Field.Label>
                 {action && <div className={fieldActionStyles}>{action}</div>}
-            </div>
+            </Flex.Row>
             {children}
             {!readOnly && (
                 <div className={fieldMessageStyles}>

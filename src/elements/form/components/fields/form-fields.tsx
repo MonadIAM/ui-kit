@@ -2,6 +2,7 @@ import { Fieldset } from "@base-ui/react/fieldset";
 import { useSelector } from "@tanstack/react-form";
 import { cn } from "cn";
 
+import { Flex } from "~ui/elements/flex";
 import { useFormContext } from "~ui/elements/form/context";
 
 import { formFieldsStyles, formLegendStyles } from "./styles";
@@ -12,6 +13,7 @@ export const FormFields: UI.Form.Fields.Signature = ({ legend, disabled = false,
 
     return (
         <Fieldset.Root
+            render={<Flex.Col render={<fieldset />} />}
             {...props}
             data-slot="field-set"
             className={cn(formFieldsStyles, className)}

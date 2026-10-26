@@ -20,7 +20,7 @@ export const fieldVariants = cva(
 
 export const fieldLabelStyles =
     "flex min-h-5 items-center text-xs font-medium leading-5 text-foreground group-data-[invalid]/field:text-destructive group-data-[disabled]/field:opacity-50";
-export const fieldHeadingStyles = "flex min-h-5 items-center justify-between gap-2";
+export const fieldHeadingStyles = "min-h-5";
 export const fieldActionStyles =
     "ml-auto shrink-0 text-xs leading-5 [&_a]:rounded-sm [&_a]:text-primary [&_a]:outline-none [&_a]:underline-offset-4 [&_a:hover]:underline [&_a:focus-visible]:ring-2 [&_a:focus-visible]:ring-ring";
 export const fieldMessageStyles = "h-5 w-full overflow-y-auto";

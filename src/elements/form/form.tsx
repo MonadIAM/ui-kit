@@ -1,25 +1,19 @@
-import { FormFields } from "./components/fields";
+import { formContext } from "./context";
 
-export const FormRoot: UI.Form.Signature = ({ form, legend, disabled = false, children, ...props }) => {
-    return (
+export const FormRoot: UI.Form.Signature = ({ form, children, ...props }) => (
+    <formContext.Provider value={form}>
         <form
             noValidate
             {...props}
             onSubmit={(event) => {
                 event.preventDefault();
-                void form.handleSubmit();
+                form.handleSubmit();
             }}
             onReset={(event) => {
                 event.preventDefault();
                 form.reset();
             }}>
-            <form.Subscribe selector={(state) => state.isSubmitting}>
-                {(isSubmitting) => (
-                    <FormFields legend={legend} disabled={disabled || isSubmitting}>
-                        {typeof children === "function" ? children({ isSubmitting }) : children}
-                    </FormFields>
-                )}
-            </form.Subscribe>
+            {children}
         </form>
-    );
-};
+    </formContext.Provider>
+);

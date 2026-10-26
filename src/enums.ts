@@ -47,7 +47,6 @@ export enum FieldType {
     URL = "url",
     TEL = "tel",
     SEARCH = "search",
-    CODE = "code",
 }
 
 export enum FieldOrientation {

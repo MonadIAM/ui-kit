@@ -1,11 +1,9 @@
-import type { JSX, ReactNode } from "react";
+import type { ComponentProps, JSX, ReactNode } from "react";
 
 declare global {
     namespace UI.Form.Fields {
-        type Props = {
-            children: ReactNode;
+        type Props = ComponentProps<"fieldset"> & {
             legend?: ReactNode;
-            disabled: boolean;
         };
 
         type Result = JSX.Element;

@@ -3,11 +3,11 @@ import { cn } from "cn";
 
 import { codeControlStyles, codeSlotStyles } from "./styles";
 
-export const CodeInput: UI.Field.CodeInput.Signature = ({ className, onBlur, ...props }) => {
+export const CodeInput: UI.Field.CodeInput.Signature = ({ className, length, onBlur, ...props }) => {
     return (
         <OTPField.Root
             {...props}
-            length={6}
+            length={length}
             data-slot="field-control"
             className={cn(codeControlStyles, className)}
             onBlur={(event) => {
@@ -15,7 +15,7 @@ export const CodeInput: UI.Field.CodeInput.Signature = ({ className, onBlur, ...
                     onBlur?.();
                 }
             }}>
-            {Array.from({ length: 6 }, (_, index) => (
+            {Array.from({ length }, (_, index) => (
                 <OTPField.Input key={index} className={codeSlotStyles} />
             ))}
         </OTPField.Root>

@@ -15,7 +15,7 @@ declare global {
             | "children"
             | "aria-invalid"
         > & {
-            type?: Exclude<FieldType, FieldType.CODE>;
+            type?: FieldType;
             showPasswordLabel?: string;
             hidePasswordLabel?: string;
         };

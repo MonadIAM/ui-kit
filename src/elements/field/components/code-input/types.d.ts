@@ -12,7 +12,6 @@ declare global {
             | "onChange"
             | "children"
             | "aria-invalid"
-            | "length"
             | "render"
             | "className"
             | "style"

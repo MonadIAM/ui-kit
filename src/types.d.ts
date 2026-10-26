@@ -1,9 +1,10 @@
 import "./elements/field/components/text-input/types";
 import "./elements/field/components/code-input/types";
-import "./elements/field/components/control/types";
 import "./elements/form/components/actions/types";
 import "./elements/field/components/frame/types";
 import "./elements/form/components/fields/types";
+import "./elements/field/components/text/types";
+import "./elements/field/components/code/types";
 import "./elements/form/components/links/types";
 import "./elements/centered-viewport/types";
 import "./elements/language-select/types";

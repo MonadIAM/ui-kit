@@ -15,6 +15,7 @@ export function Avatar({ name, label, className, ...props }: UI.Avatar.Props) {
         .map((word) => segmenter.segment(word)[Symbol.iterator]().next().value?.segment ?? "")
         .join("")
         .toLocaleUpperCase();
+
     return (
         <Text.Span
             {...props}

@@ -123,6 +123,13 @@ export enum TextTone {
     DANGER = "danger",
 }
 
+export enum BadgeTone {
+    NEUTRAL = "neutral",
+    SUCCESS = "success",
+    WARNING = "warning",
+    DANGER = "danger",
+}
+
 export enum TextAlign {
     START = "start",
     CENTER = "center",

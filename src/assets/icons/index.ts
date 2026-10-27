@@ -1,14 +1,29 @@
 /// <reference path="./types.d.ts" />
 
 export { default as ChevronDownIcon } from "./chevron-down.svg?react";
+export { default as OrganizationIcon } from "./organization.svg?react";
+export { default as ShieldLockIcon } from "./shield-lock.svg?react";
 export { default as CircleCheckIcon } from "./circle-check.svg?react";
 export { default as CircleAlertIcon } from "./circle-alert.svg?react";
 export { default as CircleInfoIcon } from "./circle-info.svg?react";
 export { default as CircleXIcon } from "./circle-x.svg?react";
 export { default as EyeOffIcon } from "./eye-off.svg?react";
+export { default as LogoutIcon } from "./logout.svg?react";
+export { default as CameraIcon } from "./camera.svg?react";
+export { default as PencilIcon } from "./pencil.svg?react";
+export { default as PeopleIcon } from "./people.svg?react";
+export { default as SearchIcon } from "./search.svg?react";
+export { default as BrushIcon } from "./brush.svg?react";
 export { default as CheckIcon } from "./check.svg?react";
 export { default as CloseIcon } from "./close.svg?react";
+export { default as TableIcon } from "./table.svg?react";
+export { default as FileIcon } from "./file.svg?react";
+export { default as GearIcon } from "./gear.svg?react";
+export { default as LinkIcon } from "./link.svg?react";
+export { default as MailIcon } from "./mail.svg?react";
+export { default as BellIcon } from "./bell.svg?react";
 export { default as UserIcon } from "./user.svg?react";
 export { default as MoonIcon } from "./moon.svg?react";
+export { default as CopyIcon } from "./copy.svg?react";
 export { default as EyeIcon } from "./eye.svg?react";
 export { default as SunIcon } from "./sun.svg?react";

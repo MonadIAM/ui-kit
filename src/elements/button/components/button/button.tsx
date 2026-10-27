@@ -13,6 +13,7 @@ export function BaseButton({
     disabled = false,
     loading = false,
     children,
+    icon,
     ...props
 }: UI.Button.Props) {
     return (
@@ -23,6 +24,7 @@ export function BaseButton({
             aria-busy={loading}
             {...props}>
             {loading && <Spinner variant={SpinnerVariant.INLINE} aria-hidden="true" className={buttonSpinnerStyles} />}
+            {icon}
             {children}
         </ButtonPrimitive>
     );

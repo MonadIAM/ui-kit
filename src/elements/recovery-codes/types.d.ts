@@ -1,9 +1,5 @@
-export {};
-
-declare global {
-    namespace UI.RecoveryCodes {
-        type Props = {
-            codes: string[];
-        };
-    }
+declare namespace UI.RecoveryCodes {
+    type Props = {
+        codes: string[];
+    };
 }

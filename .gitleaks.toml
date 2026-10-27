@@ -1,0 +1,4 @@
+title = "ui-kit gitleaks config"
+
+[extend]
+useDefault = true

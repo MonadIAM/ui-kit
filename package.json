@@ -15,6 +15,7 @@
     "tailwindcss": "^4.3.0"
   },
   "scripts": {
+    "secrets:check": "gitleaks protect --staged --config .gitleaks.toml",
     "tsc": "tsc --noEmit",
     "lint": "eslint",
     "knip": "knip --config configs/knip.config.ts"

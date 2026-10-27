@@ -7,10 +7,14 @@ Language: [EN](CONTRIBUTING.md) | **RU**
 <details>
 <summary><strong>Подготовка окружения</strong></summary>
 
-> Для приложения нужны Node.js и pnpm версий, указанных в `package.json`.
-> Другие версии не поддерживаются.
+Для локальной разработки используйте версии Node.js и pnpm, указанные
+в [client-web/package.json](../client-web/package.json).
 
-Перед запуском dev-сервера скопируйте `.env.example` в `.env`.
+Установите зависимости:
+
+```sh
+pnpm install --frozen-lockfile
+```
 
 > Для Git-хуков установите [`gitleaks`](https://github.com/gitleaks/gitleaks#installing).
 > Без него коммит не пройдёт проверку.
@@ -21,15 +25,13 @@ Language: [EN](CONTRIBUTING.md) | **RU**
 
 #### Настройка VSCode
 
-Для интеграции [ESLint](https://eslint.org/docs/latest/), [Prettier](https://prettier.io/docs/en/),
-[Stylelint](https://marketplace.visualstudio.com/items?itemName=stylelint.vscode-stylelint)
+Для интеграции [ESLint](https://eslint.org/docs/latest/), [Prettier](https://prettier.io/docs/en/)
 и [EditorConfig](https://editorconfig.org/) установите расширения:
 
 1. `dbaeumer.vscode-eslint`
 2. `rvest.vs-code-prettier-eslint`
 3. `esbenp.prettier-vscode`
-4. `stylelint.vscode-stylelint`
-5. `EditorConfig.EditorConfig`
+4. `EditorConfig.EditorConfig`
 
 </details>
 
@@ -39,6 +41,7 @@ Language: [EN](CONTRIBUTING.md) | **RU**
 <summary><strong>Git-хуки</strong></summary>
 
 Подключите хуки:
+
 ```sh
 chmod +x .githooks/*
 git config core.hooksPath .githooks
@@ -49,12 +52,11 @@ git config core.hooksPath .githooks
 `pre-commit` выполняет проверки по порядку и останавливается при первой ошибке:
 
 1. `Secret scan` — Gitleaks проверяет подготовленные к коммиту изменения.
-2. `Type check`  — TypeScript проверяет приложение.
+2. `Type check`  — TypeScript проверяет пакет.
 3. `Unused code` — Knip ищет неиспользуемые экспорты, файлы и зависимости.
-4. `ESLint`      — ESLint проверяет исходный код приложения.
-5. `Stylelint`   — Stylelint проверяет CSS-файлы.
+4. `ESLint`      — ESLint проверяет исходный код пакета.
 
-TypeScript, Knip, ESLint и Stylelint проверяют рабочую копию. Gitleaks проверяет
+TypeScript, Knip и ESLint проверяют рабочую копию. Gitleaks проверяет
 подготовленные к коммиту изменения.
 
 #### Допустимые префиксы коммитов и веток
@@ -77,8 +79,8 @@ TypeScript, Knip, ESLint и Stylelint проверяют рабочую копи
 
 Примеры:
 
-- `feat: scaffold client web app`
-- `fix(auth): handle invalid session`
+- `feat(list): add column layout`
+- `fix(radio): center the checked indicator`
 - `docs: describe local development`
 - `chore: update lint configuration`
 
@@ -95,10 +97,11 @@ TypeScript, Knip, ESLint и Stylelint проверяют рабочую копи
 
 Примеры:
 
-- `feat/add-login-page`
-- `fix/session-expiration`
+- `feat/add-qr-code`
+- `fix/radio-alignment`
 - `docs/update-development-guide`
 
+> Имя ветки ограничено 50 символами.
 > Исключения: `dev`, `main`, `master`.
 
 </details>

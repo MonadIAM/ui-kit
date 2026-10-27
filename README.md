@@ -52,11 +52,14 @@ The bundler must support TypeScript/TSX and `*.svg?react` imports. The existing
 
 Run these commands from `ui-kit`:
 
-| Command         | Description                                      |
-| --------------- | ------------------------------------------------ |
-| `pnpm run tsc`  | Check TypeScript types.                          |
-| `pnpm run lint` | Run ESLint, including configured Prettier rules. |
-| `pnpm run knip` | Find unused files, exports, and dependencies.    |
+| Command              | Description                                      |
+| -------------------- | ------------------------------------------------ |
+| `make tsc`           | Check TypeScript types.                          |
+| `make lint`          | Run ESLint, including configured Prettier rules. |
+| `make lint-fix`      | Apply available ESLint fixes.                    |
+| `make knip`          | Find unused files, exports, and dependencies.    |
+| `make secrets-check` | Scan staged changes for secrets with Gitleaks.   |
+| `make clean`         | Remove generated build and cache files.          |
 
 Visual checks and application builds run through `client-web`.
 

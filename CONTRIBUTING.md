@@ -7,10 +7,14 @@ Language: **EN** | [RU](CONTRIBUTING.ru.md)
 <details>
 <summary><strong>Environment Setup</strong></summary>
 
-> The application requires the Node.js and pnpm versions specified in `package.json`.
-> Other versions are not supported.
+Use the Node.js and pnpm versions specified in
+[client-web/package.json](../client-web/package.json) for local development.
 
-Copy `.env.example` to `.env` before starting the development server.
+Install dependencies:
+
+```sh
+pnpm install --frozen-lockfile
+```
 
 > Git hooks require [`gitleaks`](https://github.com/gitleaks/gitleaks#installing).
 > A commit is rejected if Gitleaks is not installed.
@@ -24,14 +28,12 @@ Project commands: [README](README.md).
 Install the following extensions for proper
 [ESLint](https://eslint.org/docs/latest/),
 [Prettier](https://prettier.io/docs/en/),
-[Stylelint](https://marketplace.visualstudio.com/items?itemName=stylelint.vscode-stylelint),
 and [EditorConfig](https://editorconfig.org/) integration:
 
 1. `dbaeumer.vscode-eslint`
 2. `rvest.vs-code-prettier-eslint`
 3. `esbenp.prettier-vscode`
-4. `stylelint.vscode-stylelint`
-5. `EditorConfig.EditorConfig`
+4. `EditorConfig.EditorConfig`
 
 </details>
 
@@ -41,6 +43,7 @@ and [EditorConfig](https://editorconfig.org/) integration:
 <summary><strong>Git Hooks</strong></summary>
 
 Enable Git hooks:
+
 ```sh
 chmod +x .githooks/*
 git config core.hooksPath .githooks
@@ -51,12 +54,11 @@ git config core.hooksPath .githooks
 `pre-commit` runs the steps below in order and stops at the first failure:
 
 1. `Secret scan`       — Gitleaks scans staged changes.
-2. `Type check`        — TypeScript checks the application.
+2. `Type check`        — TypeScript checks the package.
 3. `Unused code`       — Knip detects unused exports, files, and dependencies.
-4. `ESLint`            — ESLint checks the application source.
-5. `Stylelint`         — Stylelint checks CSS files.
+4. `ESLint`            — ESLint checks the package source.
 
-TypeScript, Knip, ESLint, and Stylelint check the working tree. Gitleaks scans
+TypeScript, Knip, and ESLint check the working tree. Gitleaks scans
 staged changes.
 
 #### Allowed Commit and Branch Prefixes
@@ -79,8 +81,8 @@ staged changes.
 
 Examples:
 
-- `feat: scaffold client web app`
-- `fix(auth): handle invalid session`
+- `feat(list): add column layout`
+- `fix(radio): center the checked indicator`
 - `docs: describe local development`
 - `chore: update lint configuration`
 
@@ -97,10 +99,11 @@ Examples:
 
 Examples:
 
-- `feat/add-login-page`
-- `fix/session-expiration`
+- `feat/add-qr-code`
+- `fix/radio-alignment`
 - `docs/update-development-guide`
 
+> Branch names are limited to 50 characters.
 > Exceptions: `dev`, `main`, `master`.
 
 </details>

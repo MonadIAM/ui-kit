@@ -17,6 +17,7 @@ export const FieldFrame: UI.Field.Frame.Signature = ({
     action,
     orientation,
     readOnly,
+    reserveErrorSpace = true,
     errors,
     invalidMessage = "Invalid value",
     children,
@@ -29,6 +30,7 @@ export const FieldFrame: UI.Field.Frame.Signature = ({
             : issue && typeof issue === "object" && "message" in issue && typeof issue.message === "string"
               ? issue.message
               : invalidMessage;
+
     return (
         <Field.Root
             {...props}
@@ -48,7 +50,7 @@ export const FieldFrame: UI.Field.Frame.Signature = ({
                 {action && <div className={fieldActionStyles}>{action}</div>}
             </Flex.Row>
             {children}
-            {!readOnly && (
+            {!readOnly && (reserveErrorSpace ?? errors.length > 0) && (
                 <div className={fieldMessageStyles}>
                     {errors.length > 0 && (
                         <Field.Error match role="alert" data-slot="field-error" className={fieldErrorStyles}>

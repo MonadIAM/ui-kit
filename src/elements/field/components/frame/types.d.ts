@@ -7,6 +7,7 @@ declare global {
     namespace UI.Field.Frame {
         type Props = Pick<FieldPrimitive.Root.Props, "name" | "disabled" | "dirty" | "touched"> & {
             orientation?: FieldOrientation;
+            reserveErrorSpace?: boolean;
             invalidMessage?: string;
             children: ReactNode;
             action?: ReactNode;

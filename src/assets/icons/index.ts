@@ -1,11 +1,11 @@
 /// <reference path="./types.d.ts" />
 
-export { default as ChevronDownIcon } from "./chevron-down.svg?react";
 export { default as OrganizationIcon } from "./organization.svg?react";
-export { default as ShieldLockIcon } from "./shield-lock.svg?react";
+export { default as ChevronDownIcon } from "./chevron-down.svg?react";
 export { default as CircleCheckIcon } from "./circle-check.svg?react";
 export { default as CircleAlertIcon } from "./circle-alert.svg?react";
 export { default as CircleInfoIcon } from "./circle-info.svg?react";
+export { default as ShieldLockIcon } from "./shield-lock.svg?react";
 export { default as CircleXIcon } from "./circle-x.svg?react";
 export { default as EyeOffIcon } from "./eye-off.svg?react";
 export { default as LogoutIcon } from "./logout.svg?react";
@@ -25,5 +25,6 @@ export { default as BellIcon } from "./bell.svg?react";
 export { default as UserIcon } from "./user.svg?react";
 export { default as MoonIcon } from "./moon.svg?react";
 export { default as CopyIcon } from "./copy.svg?react";
+export { default as MoreIcon } from "./more.svg?react";
 export { default as EyeIcon } from "./eye.svg?react";
 export { default as SunIcon } from "./sun.svg?react";

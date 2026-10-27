@@ -9,6 +9,8 @@ export { Section } from "./elements/section";
 export { Warning } from "./elements/warning";
 export { ToastHost } from "./elements/toast";
 export { Spinner } from "./elements/spinner";
+export { QRCode } from "./elements/qr-code";
+export { Switch } from "./elements/switch";
 export { Navbar } from "./elements/navbar";
 export { Avatar } from "./elements/avatar";
 export { Button } from "./elements/button";

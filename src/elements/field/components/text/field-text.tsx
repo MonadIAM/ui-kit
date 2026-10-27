@@ -6,6 +6,7 @@ import { TextInput } from "../text-input";
 import { FieldFrame } from "../frame";
 
 export const FieldText: UI.Field.Text.Signature = ({
+    reserveErrorSpace,
     invalidMessage,
     orientation,
     validators,
@@ -30,6 +31,7 @@ export const FieldText: UI.Field.Text.Signature = ({
             action={action}
             orientation={orientation}
             invalidMessage={invalidMessage}
+            reserveErrorSpace={reserveErrorSpace}
             readOnly={props.readOnly}
             disabled={props.disabled}
             dirty={field.state.meta.isDirty}

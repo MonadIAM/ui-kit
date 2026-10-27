@@ -6,7 +6,7 @@ import { Text } from "~ui/elements/text";
 
 import { listStyles } from "./styles";
 
-export function List({ items, className, ...props }: UI.List.Props) {
+export function BaseList({ items, className, ...props }: UI.List.Props) {
     return (
         <ul {...props} className={cn(listStyles.root, className)}>
             {items.map(({ id, label, showLabel = true, content, action }) => (

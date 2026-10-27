@@ -5,7 +5,7 @@ declare global {
     namespace UI.Field.Code {
         type Props<TForm extends AnyFormApi, TName extends Binding.Name<TForm, string>> = Binding.Props<TForm, TName> &
             CodeInput.Options &
-            Pick<Frame.Props, "label" | "orientation" | "invalidMessage">;
+            Pick<Frame.Props, "label" | "orientation" | "invalidMessage" | "reserveErrorSpace">;
 
         type Result = JSX.Element;
 

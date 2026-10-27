@@ -5,7 +5,7 @@ declare global {
     namespace UI.Field.Text {
         type Props<TForm extends AnyFormApi, TName extends Binding.Name<TForm, string>> = Binding.Props<TForm, TName> &
             TextInput.Options &
-            Pick<Frame.Props, "label" | "orientation" | "invalidMessage" | "action">;
+            Pick<Frame.Props, "label" | "orientation" | "invalidMessage" | "reserveErrorSpace" | "action">;
 
         type Result = JSX.Element;
 

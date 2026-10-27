@@ -5,6 +5,7 @@ declare global {
         type Props = Omit<ComponentPropsWithRef<"section">, "title"> & {
             title: ReactNode;
             description?: ReactNode;
+            actions?: ReactNode;
         };
     }
 }

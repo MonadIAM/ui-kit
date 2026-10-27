@@ -7,6 +7,7 @@ import { FieldFrame } from "../frame";
 
 export const FieldCode: UI.Field.Code.Signature = ({
     invalidMessage,
+    reserveErrorSpace,
     orientation,
     validators,
     label,
@@ -28,6 +29,7 @@ export const FieldCode: UI.Field.Code.Signature = ({
             label={label}
             orientation={orientation}
             invalidMessage={invalidMessage}
+            reserveErrorSpace={reserveErrorSpace}
             readOnly={props.readOnly}
             disabled={props.disabled}
             dirty={field.state.meta.isDirty}

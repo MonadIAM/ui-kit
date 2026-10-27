@@ -6,6 +6,7 @@ import { SelectInput } from "../select-input";
 import { FieldFrame } from "../frame";
 
 export const FieldSelect: UI.Field.Select.Signature = ({
+    reserveErrorSpace,
     invalidMessage,
     orientation,
     validators,
@@ -30,6 +31,7 @@ export const FieldSelect: UI.Field.Select.Signature = ({
             action={action}
             orientation={orientation}
             invalidMessage={invalidMessage}
+            reserveErrorSpace={reserveErrorSpace}
             disabled={props.disabled}
             dirty={field.state.meta.isDirty}
             touched={field.state.meta.isTouched}

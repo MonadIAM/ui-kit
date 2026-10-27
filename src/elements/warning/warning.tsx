@@ -11,7 +11,7 @@ export function Warning({ title, children, className, ...props }: UI.Warning.Pro
     return (
         <Flex.Row role="note" gap="0.75rem" className={cn(warningStyles.root, className)} {...props}>
             <CircleAlertIcon aria-hidden="true" className={warningStyles.icon} />
-            <Flex.Col gap="0.25rem">
+            <Flex.Col gap="0.25rem" className={warningStyles.content}>
                 <Text.P weight={TextWeight.SEMIBOLD}>{title}</Text.P>
                 <Text.P tone={TextTone.MUTED}>{children}</Text.P>
             </Flex.Col>

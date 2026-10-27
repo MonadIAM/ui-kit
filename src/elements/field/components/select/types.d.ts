@@ -7,7 +7,7 @@ declare global {
 
         type Props<TForm extends AnyFormApi, TName extends Binding.Name<TForm, string>> = Binding.Props<TForm, TName> &
             SelectInput.Options &
-            Pick<Frame.Props, "orientation" | "invalidMessage" | "action">;
+            Pick<Frame.Props, "orientation" | "invalidMessage" | "reserveErrorSpace" | "action">;
 
         type Result = JSX.Element;
 

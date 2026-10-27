@@ -17,20 +17,23 @@ import "./elements/language-select/types";
 import "./elements/recovery-codes/types";
 import "./elements/dropdown-menu/types";
 import "./elements/theme-toggle/types";
+import "./elements/list/columns/types";
 import "./elements/container/types";
+import "./elements/qr-code/types";
 import "./elements/section/types";
 import "./elements/warning/types";
 import "./elements/spinner/types";
+import "./elements/switch/types";
 import "./elements/navbar/types";
 import "./elements/avatar/types";
 import "./elements/dialog/types";
+import "./elements/badge/types";
 import "./elements/toast/types";
 import "./elements/field/types";
 import "./elements/form/types";
 import "./elements/flex/types";
 import "./elements/text/types";
 import "./elements/list/types";
-import "./elements/badge/types";
 
 declare global {
     namespace UI {

@@ -5,14 +5,15 @@ import { cn } from "cn";
 import { listContentStyles } from "./styles";
 
 export function ListContent<Item extends UI.List.KeyedItem>({
-    items,
-    renderItem,
-    height,
     estimateSize = 64,
     hasMore = false,
     loading = false,
     onEndReached,
+    renderItem,
+    maxHeight,
     className,
+    height,
+    items,
     ...props
 }: UI.List.Custom.Props<Item>) {
     "use no memo";
@@ -24,7 +25,7 @@ export function ListContent<Item extends UI.List.KeyedItem>({
         getItemKey: (index) => items[index].id,
         estimateSize: () => estimateSize,
         overscan: 3,
-        enabled: height !== undefined,
+        enabled: height !== undefined || maxHeight !== undefined,
     });
     const virtualItems = virtualizer.getVirtualItems();
     const lastIndex = virtualItems.at(-1)?.index;
@@ -35,7 +36,7 @@ export function ListContent<Item extends UI.List.KeyedItem>({
         }
     }, [lastIndex, items.length, hasMore, loading, onEndReached]);
 
-    if (!height) {
+    if (height === undefined && maxHeight === undefined) {
         return (
             <ul {...props} className={cn(listContentStyles.root, className)} aria-busy={loading}>
                 {items.map((item) => (
@@ -48,7 +49,10 @@ export function ListContent<Item extends UI.List.KeyedItem>({
     }
 
     return (
-        <div ref={setScrollElement} className={listContentStyles.viewport} style={{ height }}>
+        <div
+            ref={setScrollElement}
+            className={listContentStyles.viewport}
+            style={{ height: height ?? Math.min(maxHeight ?? Infinity, virtualizer.getTotalSize()), maxHeight }}>
             <ul
                 {...props}
                 className={cn(listContentStyles.root, listContentStyles.canvas, className)}

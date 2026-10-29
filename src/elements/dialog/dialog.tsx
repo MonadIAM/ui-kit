@@ -9,7 +9,15 @@ import { Text } from "~ui/elements/text";
 
 import { dialogStyles } from "./styles";
 
-export function DialogContent({ title, description, closeLabel, children, className, ...props }: UI.Dialog.Content.Props) {
+export function DialogContent({
+    showClose = true,
+    description,
+    closeLabel,
+    className,
+    children,
+    title,
+    ...props
+}: UI.Dialog.Content.Props) {
     return (
         <Primitive.Portal>
             <Primitive.Backdrop className={dialogStyles.backdrop} />
@@ -27,12 +35,14 @@ export function DialogContent({ title, description, closeLabel, children, classN
                             </Primitive.Description>
                         )}
                     </Flex.Col>
-                    <Primitive.Close
-                        render={<Button variant={ButtonVariant.GHOST} size={ButtonSize.ICON} />}
-                        aria-label={closeLabel}
-                        className={dialogStyles.close}>
-                        <CloseIcon aria-hidden="true" />
-                    </Primitive.Close>
+                    {showClose && (
+                        <Primitive.Close
+                            render={<Button variant={ButtonVariant.GHOST} size={ButtonSize.ICON} />}
+                            aria-label={closeLabel}
+                            className={dialogStyles.close}>
+                            <CloseIcon aria-hidden="true" />
+                        </Primitive.Close>
+                    )}
                     {children}
                 </Primitive.Popup>
             </Primitive.Viewport>

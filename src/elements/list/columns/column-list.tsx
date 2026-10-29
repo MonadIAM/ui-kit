@@ -8,6 +8,7 @@ import { columnListStyles } from "./styles";
 export function ColumnList({
     onEndReached,
     estimateSize,
+    maxHeight,
     className,
     columns,
     hasMore,
@@ -33,6 +34,7 @@ export function ColumnList({
                 aria-label={label}
                 items={items}
                 height={height}
+                maxHeight={maxHeight}
                 estimateSize={estimateSize}
                 hasMore={hasMore}
                 loading={loading}

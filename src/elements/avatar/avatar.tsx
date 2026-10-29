@@ -1,11 +1,11 @@
+import { Avatar as Primitive } from "@base-ui/react/avatar";
 import { cn } from "cn";
 
 import { UserIcon } from "~ui/assets/icons";
-import { Text } from "~ui/elements/text";
 
-import { avatarStyles, avatarIconStyles } from "./styles";
+import { avatarStyles, avatarIconStyles, avatarImageStyles } from "./styles";
 
-export function Avatar({ name, label, className, ...props }: UI.Avatar.Props) {
+export function Avatar({ name, label, src, className, ...props }: UI.Avatar.Props) {
     const segmenter = new Intl.Segmenter(undefined, { granularity: "grapheme" });
     const initials = name
         ?.trim()
@@ -17,13 +17,16 @@ export function Avatar({ name, label, className, ...props }: UI.Avatar.Props) {
         .toLocaleUpperCase();
 
     return (
-        <Text.Span
+        <Primitive.Root
             {...props}
             role="img"
             aria-label={label}
             title={name?.trim() ? name : label}
             className={cn(avatarStyles, className)}>
-            {initials?.length ? initials : <UserIcon aria-hidden="true" className={avatarIconStyles} />}
-        </Text.Span>
+            <Primitive.Image src={src} alt="" className={avatarImageStyles} />
+            <Primitive.Fallback>
+                {initials?.length ? initials : <UserIcon aria-hidden="true" className={avatarIconStyles} />}
+            </Primitive.Fallback>
+        </Primitive.Root>
     );
 }

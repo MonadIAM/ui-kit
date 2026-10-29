@@ -13,6 +13,7 @@ declare global {
 
         type Virtualization = {
             estimateSize?: number;
+            maxHeight?: number;
             hasMore?: boolean;
             loading?: boolean;
             height?: number;

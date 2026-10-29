@@ -8,9 +8,12 @@ export function TextH3({
     size = TextSize.LG,
     weight = TextWeight.SEMIBOLD,
     className,
+    hyphens,
     align,
     tone,
     ...props
 }: UI.Text.Props<"h3">) {
-    return <h3 {...props} className={cn(textVariants({ size, weight, tone, align }), textHeadingStyles, className)} />;
+    return (
+        <h3 {...props} className={cn(textVariants({ size, weight, tone, align, hyphens }), textHeadingStyles, className)} />
+    );
 }

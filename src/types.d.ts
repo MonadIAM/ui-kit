@@ -23,6 +23,7 @@ import "./elements/qr-code/types";
 import "./elements/section/types";
 import "./elements/warning/types";
 import "./elements/spinner/types";
+import "./elements/popover/types";
 import "./elements/switch/types";
 import "./elements/navbar/types";
 import "./elements/avatar/types";

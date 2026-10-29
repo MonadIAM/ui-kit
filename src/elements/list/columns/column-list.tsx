@@ -2,9 +2,22 @@ import { cn } from "cn";
 
 import { Text } from "~ui/elements/text";
 
+import { ListContent } from "../content";
 import { columnListStyles } from "./styles";
 
-export function ColumnList({ label, columns, items, empty, className, ...props }: UI.List.Columns.Props) {
+export function ColumnList({
+    onEndReached,
+    estimateSize,
+    className,
+    columns,
+    hasMore,
+    loading,
+    height,
+    label,
+    items,
+    empty,
+    ...props
+}: UI.List.Columns.Props) {
     const gridTemplateColumns = columns.map((column) => column.width ?? "minmax(0, 1fr)").join(" ");
 
     return (
@@ -16,18 +29,25 @@ export function ColumnList({ label, columns, items, empty, className, ...props }
                     </Text.Span>
                 ))}
             </div>
-            <ul aria-label={label} className={columnListStyles.list}>
-                {items.map(({ id, cells }) => (
-                    <li key={id} className={columnListStyles.row} style={{ gridTemplateColumns }}>
+            <ListContent
+                aria-label={label}
+                items={items}
+                height={height}
+                estimateSize={estimateSize}
+                hasMore={hasMore}
+                loading={loading}
+                onEndReached={onEndReached}
+                renderItem={({ cells }) => (
+                    <div className={columnListStyles.row} style={{ gridTemplateColumns }}>
                         {columns.map((column) => (
                             <div key={column.id} className={cn(columnListStyles.cell, column.className)}>
                                 <Text.Span className={columnListStyles.hidden}>{column.label}: </Text.Span>
                                 {cells[column.id]}
                             </div>
                         ))}
-                    </li>
-                ))}
-            </ul>
+                    </div>
+                )}
+            />
             {items.length === 0 && <Text.P className={columnListStyles.empty}>{empty}</Text.P>}
         </div>
     );

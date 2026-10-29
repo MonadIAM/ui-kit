@@ -136,3 +136,9 @@ export enum TextAlign {
     END = "end",
     JUSTIFY = "justify",
 }
+
+export enum TextHyphens {
+    NONE = "none",
+    MANUAL = "manual",
+    AUTO = "auto",
+}

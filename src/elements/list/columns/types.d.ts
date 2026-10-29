@@ -14,11 +14,12 @@ declare global {
             cells: Record<string, ReactNode>;
         };
 
-        type Props = Omit<ComponentPropsWithRef<"div">, "children"> & {
-            empty?: ReactNode;
-            columns: Column[];
-            label: string;
-            items: Item[];
-        };
+        type Props = Omit<ComponentPropsWithRef<"div">, "children"> &
+            UI.List.Virtualization & {
+                empty?: ReactNode;
+                columns: Column[];
+                label: string;
+                items: Item[];
+            };
     }
 }

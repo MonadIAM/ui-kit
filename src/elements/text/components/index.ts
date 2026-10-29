@@ -1,3 +1,4 @@
+export { TextTime } from "./time";
 export { TextSpan } from "./span";
 export { TextH1 } from "./h1";
 export { TextH2 } from "./h2";

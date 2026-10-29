@@ -1,9 +1,14 @@
 import { cva } from "class-variance-authority";
 
-import { TextSize, TextWeight, TextTone, TextAlign } from "~ui/enums";
+import { TextSize, TextWeight, TextTone, TextAlign, TextHyphens } from "~ui/enums";
 
 export const textVariants = cva("", {
     variants: {
+        hyphens: {
+            [TextHyphens.NONE]: "hyphens-none",
+            [TextHyphens.MANUAL]: "hyphens-manual",
+            [TextHyphens.AUTO]: "hyphens-auto",
+        },
         size: {
             [TextSize.XS]: "text-xs leading-4",
             [TextSize.SM]: "text-sm leading-6",

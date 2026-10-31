@@ -7,6 +7,7 @@ export { default as CircleAlertIcon } from "./circle-alert.svg?react";
 export { default as CircleInfoIcon } from "./circle-info.svg?react";
 export { default as ShieldLockIcon } from "./shield-lock.svg?react";
 export { default as CircleXIcon } from "./circle-x.svg?react";
+export { default as RefreshIcon } from "./refresh.svg?react";
 export { default as EyeOffIcon } from "./eye-off.svg?react";
 export { default as VolumeIcon } from "./volume.svg?react";
 export { default as LogoutIcon } from "./logout.svg?react";

@@ -1,5 +1,5 @@
 import { Combobox } from "@base-ui/react/combobox";
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 
 import { CheckIcon, ChevronDownIcon } from "~ui/assets/icons";
 import { Flex } from "~ui/elements/flex";
@@ -12,6 +12,7 @@ export const SearchSelectInput: UI.Field.SelectInput.Search.Signature = ({
     onBlur,
     searchLabel,
     emptyLabel,
+    customValueLabel,
     disabled,
     options,
     value,
@@ -19,10 +20,25 @@ export const SearchSelectInput: UI.Field.SelectInput.Search.Signature = ({
     name,
 }) => {
     const { contains } = Combobox.useFilter();
-    const items = useMemo(
-        () => Combobox.createItems(options, { getValue: (option) => option.value, getLabel: (option) => option.label }),
-        [options],
-    );
+    const [query, setQuery] = useState("");
+    const items = useMemo(() => {
+        const choices = [...options];
+        if (customValueLabel) {
+            if (value && !choices.some((option) => option.value === value)) {
+                choices.push({ value, label: value });
+            }
+            const custom = query.trim();
+            if (
+                custom &&
+                !choices.some((option) =>
+                    [option.label, option.value].some((text) => text.toLocaleLowerCase() === custom.toLocaleLowerCase()),
+                )
+            ) {
+                choices.push({ value: custom, label: custom, description: customValueLabel });
+            }
+        }
+        return Combobox.createItems(choices, { getValue: (option) => option.value, getLabel: (option) => option.label });
+    }, [options, value, query, customValueLabel]);
 
     return (
         <Combobox.Root
@@ -30,6 +46,8 @@ export const SearchSelectInput: UI.Field.SelectInput.Search.Signature = ({
             value={value}
             disabled={disabled}
             name={name}
+            onInputValueChange={setQuery}
+            onOpenChange={() => setQuery("")}
             onValueChange={(selected) => onValueChange?.(selected ?? "")}
             filter={(option, query) => contains([option.label, option.value, option.description].join(" "), query)}>
             <Combobox.Trigger

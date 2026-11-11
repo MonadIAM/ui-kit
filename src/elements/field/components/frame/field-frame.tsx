@@ -50,7 +50,7 @@ export const FieldFrame: UI.Field.Frame.Signature = ({
                 {action && <div className={fieldActionStyles}>{action}</div>}
             </Flex.Row>
             {children}
-            {!readOnly && (reserveErrorSpace ?? errors.length > 0) && (
+            {!readOnly && (reserveErrorSpace || errors.length > 0) && (
                 <div className={fieldMessageStyles}>
                     {errors.length > 0 && (
                         <Field.Error match role="alert" data-slot="field-error" className={fieldErrorStyles}>

@@ -27,6 +27,7 @@ declare global {
             searchable: true;
             searchLabel: string;
             emptyLabel: string;
+            customValueLabel?: string;
         };
 
         type SearchOptions = StaticOptions | SearchableOptions;

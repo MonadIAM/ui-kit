@@ -1,4 +1,6 @@
 import "./elements/field/components/select-input/types";
+import "./elements/field/components/date-input/types";
+import "./elements/field/components/date/types";
 import "./elements/field/components/text-input/types";
 import "./elements/field/components/code-input/types";
 import "./elements/button/components/button/types";

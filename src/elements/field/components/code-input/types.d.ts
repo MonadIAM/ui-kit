@@ -1,23 +1,24 @@
-import type { OTPField } from "@base-ui/react/otp-field";
 import type { ComponentProps, JSX } from "react";
 
 declare global {
     namespace UI.Field.CodeInput {
         type Options = Omit<
-            OTPField.Root.Props,
+            ComponentProps<"input">,
             | keyof UI.Field.Input.Contract
+            | "type"
             | "form"
             | "name"
             | "defaultValue"
             | "onChange"
             | "children"
             | "aria-invalid"
-            | "render"
-            | "className"
-            | "style"
-            | "ref"
-        > &
-            Pick<ComponentProps<"div">, "className" | "style">;
+            | "maxLength"
+        > & {
+            length: number;
+            groupSize?: number;
+            validationType?: "numeric" | "alphanumeric";
+            normalizeValue?(value: string): string;
+        };
 
         type Props = Options & UI.Field.Input.Contract;
 

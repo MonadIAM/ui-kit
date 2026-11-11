@@ -26,6 +26,9 @@ importers:
       qrcode.react:
         specifier: 4.2.0
         version: 4.2.0(react@19.3.0)
+      react-day-picker:
+        specifier: 10.0.1
+        version: 10.0.1(@types/react@19.3.0)(react@19.3.0)
       tailwindcss:
         specifier: ^4.3.0
         version: 4.3.3
@@ -1142,6 +1145,16 @@ packages:
     peerDependencies:
       react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
 
+  react-day-picker@10.0.1:
+    resolution: {integrity: sha512-eNh6BlwcYInWaJtRv18mXQ06Ys/H6rdTZAnTaSdOYJuTpwP1JMCHNd1FDRadA+gbeinq+psdULN5Xnowy9mV8w==}
+    engines: {node: '>=18'}
+    peerDependencies:
+      '@types/react': '>=16.8.0'
+      react: '>=16.8.0'
+    peerDependenciesMeta:
+      '@types/react':
+        optional: true
+
   react-dom@19.3.0:
     resolution: {integrity: sha512-JDk8dgif51OjFoDE70+OT9ICyYr+69HlmihNwp1+Nsfbna3t5sIiCa9ZJktDmQ4/1b/rn26hIAR2uYXDMr5r0Q==}
     peerDependencies:
@@ -1413,8 +1426,7 @@ snapshots:
     optionalDependencies:
       '@types/react': 19.3.0
 
-  '@date-fns/tz@1.5.0':
-    optional: true
+  '@date-fns/tz@1.5.0': {}
 
   '@emnapi/core@1.10.0':
     dependencies:
@@ -1934,8 +1946,7 @@ snapshots:
 
   csstype@3.2.3: {}
 
-  date-fns@4.4.0:
-    optional: true
+  date-fns@4.4.0: {}
 
   debug@4.4.3(supports-color@10.2.2):
     dependencies:
@@ -2278,6 +2289,14 @@ snapshots:
   qrcode.react@4.2.0(react@19.3.0):
     dependencies:
       react: 19.3.0
+
+  react-day-picker@10.0.1(@types/react@19.3.0)(react@19.3.0):
+    dependencies:
+      '@date-fns/tz': 1.5.0
+      date-fns: 4.4.0
+      react: 19.3.0
+    optionalDependencies:
+      '@types/react': 19.3.0
 
   react-dom@19.3.0(react@19.3.0):
     dependencies:

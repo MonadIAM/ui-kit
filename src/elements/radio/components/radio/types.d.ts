@@ -1,10 +1,11 @@
 import type { Radio as RadioPrimitive } from "@base-ui/react/radio";
-import type { JSX } from "react";
+import type { JSX, ReactNode } from "react";
 
 declare global {
     namespace UI.Radio {
         type Props = Omit<RadioPrimitive.Root.Props<string>, "children" | "className" | "render"> & {
             label: string;
+            preview?: ReactNode;
             showLabel?: boolean;
             className?: string;
         };

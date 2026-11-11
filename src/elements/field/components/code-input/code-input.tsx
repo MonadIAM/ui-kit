@@ -1,26 +1,48 @@
-import { OTPField } from "@base-ui/react/otp-field";
+import { Input as InputPrimitive } from "@base-ui/react/input";
 import { cn } from "cn";
 
-import { Flex } from "~ui/elements/flex";
+import { textInputStyles } from "../text-input/styles";
+import { codeInputStyles } from "./styles";
 
-import { codeControlStyles, codeSlotStyles } from "./styles";
+export const CodeInput: UI.Field.CodeInput.Signature = ({
+    className,
+    groupSize,
+    length,
+    value,
+    validationType = "numeric",
+    normalizeValue,
+    onValueChange,
+    inputMode,
+    ...props
+}) => {
+    const grouped = groupSize !== undefined && groupSize > 0;
 
-export const CodeInput: UI.Field.CodeInput.Signature = ({ className, length, onBlur, ...props }) => {
+    const handleValueChange = (input: string) => {
+        const normalized = normalizeValue ? normalizeValue(input) : input;
+        const code = normalized.replace(validationType === "numeric" ? /[^0-9]/g : /[^a-zA-Z0-9]/g, "").slice(0, length);
+
+        if (grouped) {
+            const groups: string[] = [];
+            for (let index = 0; index < code.length; index += groupSize) {
+                groups.push(code.slice(index, index + groupSize));
+            }
+            onValueChange?.(groups.join("-"));
+        } else {
+            onValueChange?.(code);
+        }
+    };
+
     return (
-        <OTPField.Root
-            render={<Flex.Row gap="0.5rem" />}
+        <InputPrimitive
+            autoCapitalize="none"
+            spellCheck={false}
             {...props}
-            length={length}
+            type="text"
+            inputMode={inputMode ?? (validationType === "numeric" ? "numeric" : "text")}
+            value={grouped ? value.replaceAll("-", "") : value}
+            onValueChange={handleValueChange}
             data-slot="field-control"
-            className={cn(codeControlStyles, className)}
-            onBlur={(event) => {
-                if (!event.currentTarget.contains(event.relatedTarget)) {
-                    onBlur?.();
-                }
-            }}>
-            {Array.from({ length }, (_, index) => (
-                <OTPField.Input key={index} className={codeSlotStyles} />
-            ))}
-        </OTPField.Root>
+            className={cn(textInputStyles, codeInputStyles, className)}
+        />
     );
 };

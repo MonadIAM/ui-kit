@@ -12,6 +12,8 @@ export { default as EyeOffIcon } from "./eye-off.svg?react";
 export { default as VolumeIcon } from "./volume.svg?react";
 export { default as LogoutIcon } from "./logout.svg?react";
 export { default as CameraIcon } from "./camera.svg?react";
+export { default as TrashIcon } from "./trash.svg?react";
+export { default as CalendarIcon } from "./calendar.svg?react";
 export { default as PencilIcon } from "./pencil.svg?react";
 export { default as PeopleIcon } from "./people.svg?react";
 export { default as SearchIcon } from "./search.svg?react";

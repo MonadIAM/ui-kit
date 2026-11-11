@@ -1,4 +1,6 @@
 export const radioStyles = {
+    card: "min-w-0 p-2",
+    preview: "block w-full overflow-hidden rounded-sm",
     labelHidden: "sr-only",
     label: "min-h-10 flex-1 cursor-pointer rounded-md border border-border px-3 py-2 text-sm text-foreground has-[[data-checked]]:border-primary has-[[data-checked]]:bg-primary/10 has-[:focus-visible]:ring-2 has-[:focus-visible]:ring-ring has-[[data-disabled]]:cursor-not-allowed has-[[data-disabled]]:opacity-50",
     control:

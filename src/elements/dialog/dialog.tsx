@@ -40,12 +40,21 @@ export function DialogContent({
                             render={<Button variant={ButtonVariant.GHOST} size={ButtonSize.ICON} />}
                             aria-label={closeLabel}
                             className={dialogStyles.close}>
-                            <CloseIcon aria-hidden="true" />
+                            <CloseIcon aria-hidden="true" className={dialogStyles.closeIcon} />
                         </Primitive.Close>
                     )}
                     {children}
                 </Primitive.Popup>
             </Primitive.Viewport>
         </Primitive.Portal>
+    );
+}
+
+export function DialogActions({ className, leading, children, ...props }: UI.Dialog.Actions.Props) {
+    return (
+        <div {...props} data-slot="dialog-actions" className={cn(dialogStyles.actions, className)}>
+            {leading && <div className={dialogStyles.actionLeading}>{leading}</div>}
+            <div className={dialogStyles.actionButtons}>{children}</div>
+        </div>
     );
 }
